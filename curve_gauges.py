@@ -11,7 +11,7 @@ titles = []
 
 def find_proposals():
 
-    html_text = requests.get('https://gov.curve.fi/c/gauge-proposals/11').text
+    html_text = requests.get('YOUR WEBSITE').text
 
     soup = BeautifulSoup(html_text, 'lxml')
     proposals = soup.find_all('span', class_ = 'link-top-line')
@@ -34,12 +34,12 @@ def find_proposals():
 
 
 
-    def test_google_sheet():
+    def google_sheet():
         try:
             # Authenticate with Google Sheets
             scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/spreadsheets',
                     'https://www.googleapis.com/auth/drive.file', 'https://www.googleapis.com/auth/drive']
-            creds = ServiceAccountCredentials.from_json_keyfile_name('scraping.json', scope)
+            creds = ServiceAccountCredentials.from_json_keyfile_name('YOUR JSON FILE', scope)
             client = gspread.authorize(creds)
 
             # Open the Google Sheet by its name
@@ -54,7 +54,7 @@ def find_proposals():
         except Exception as e:
             print(f"Error: {e}")
 
-    test_google_sheet()
+    google_sheet()
 
 if __name__ == '__main__':
     days_to_run = 7  # example value; change to whatever you need
